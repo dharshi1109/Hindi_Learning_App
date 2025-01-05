@@ -222,15 +222,18 @@ def show_history_page():
 
 
 def show_prompt_page():
-    st.title("Learning Hindi")
-    hindi_text = st.text_area("Enter Hindi Text")
-    
-    if hindi_text:
-        response = process_hindi_text1(hindi_text)
-        
-        st.subheader("Response")
-        st.write(response)
-
+    hindi_text = st.text_area("Enter Hindi Text:")
+    if st.button("Submit"): 
+        if hindi_text.strip():  
+            with st.spinner("Processing..."):
+                try:
+                    response = process_hindi_text1(hindi_text)
+                    st.markdown("Response")
+                    st.write(response)
+                except Exception as e:
+                    st.error(f"An error occurred: {e}")
+        else:
+            st.warning("Please enter some Hindi text!")
 
 def show_word_page():
     st.title("Words")
