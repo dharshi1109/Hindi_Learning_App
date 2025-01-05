@@ -1,9 +1,11 @@
 import streamlit as st
+from dotenv import load_dotenv
+load_dotenv()
 import os
 import openai
 import os
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
-openai.api_key = "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"
 
 initial_prompt = """
 You are an intelligent assistant. Whenever I provide a text para or sentence in hindi , respond in the following format.First if its a para display the sentence one by one.After displaying the sentence give its phonetic version in english followed by the english meaning of the sentence
